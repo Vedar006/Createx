@@ -6,8 +6,10 @@
 
 // подключения компонентов страницы(большие)
 @import "./components/header";
-
+@import "./components/hero";
+@import "./components/about-section";
 
 // подключения компонентов страницы(малые)
 @import "./components/nav";
 @import "./components/header-contacts";
+@import "./components/video-block";
