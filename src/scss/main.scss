@@ -5,6 +5,7 @@
 @import "settings";
 
 @import "./components/slider-nav";
+@import "./components/form-field";
 
 // подключения компонентов страницы(большие)
 @import "./components/header";
@@ -18,9 +19,11 @@
 @import "./components/facts.scss";
 @import "./components/recent-news.scss";
 @import "./components/contacts-section.scss";
+@import "./components/footer.scss";
 // подключения компонентов страницы(малые)
 @import "./components/nav";
 @import "./components/header-contacts";
 @import "./components/video-block";
-@import "./components/form-field";
+
 @import "./components/learn-more";
+@import "./components/social";
