@@ -14,16 +14,19 @@
 @import "./components/mission";
 @import "./components/services-section";
 @import "./components/portfolio-section";
-@import "./components/partners.scss";
-@import "./components/testimonials.scss";
-@import "./components/facts.scss";
-@import "./components/recent-news.scss";
-@import "./components/contacts-section.scss";
-@import "./components/footer.scss";
+@import "./components/partners";
+@import "./components/testimonials";
+@import "./components/facts";
+@import "./components/recent-news";
+@import "./components/contacts-section";
+@import "./components/footer";
+
+@import "./components/hero-services";
+@import "./components/services-content";
 // подключения компонентов страницы(малые)
 @import "./components/nav";
 @import "./components/header-contacts";
 @import "./components/video-block";
-
+@import "./components/breadcrumbs";
 @import "./components/learn-more";
 @import "./components/social";

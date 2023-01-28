@@ -136,6 +136,7 @@ a {
   }
 }
 .btn {
+  display: inline-block;
   border-width: 1px;
     border-style: solid;
   border-color: transparent;
@@ -158,11 +159,17 @@ a {
   &--stroke {
 
 &-light {
+  color:var(--light-color);
 
   border-color: var(--light-color);
     }
+    &-primary {
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+        }
   }
 }
+
 .title {
   margin: 0;
   margin-bottom: 25px;

@@ -10,4 +10,12 @@
   &--main {
     background-color: var(--light-color);
   }
+
+  &--secondary {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+
+  }
 }
