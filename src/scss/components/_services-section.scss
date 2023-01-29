@@ -13,10 +13,10 @@
 }
 
 .services-list {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--grid-gap);
 
+  &__item {
+    grid-column: 3 span;
+  }
 
 }
 

@@ -4,68 +4,128 @@ import './_functions';
 import './_components';
 import Swiper, { Navigation, Pagination } from 'swiper';
 
-const portSlider = document.querySelector('.portfolio-section__items');
 
+const portSlider = document.querySelector('.portfolio-section__items');
 const bodyStyles = window.getComputedStyle(document.body);
 const gap = parseInt(bodyStyles.getPropertyValue('--grid-gap'));
+class GraphAccordion {
+	constructor(selector, options) {
+		let defaultOptions = {
+			isOpen: () => {},
+			isClose: () => {},
+			speed: 300
+		};
 
-Swiper.use([Navigation, Pagination]);
-const portfolioSlider = new Swiper(portSlider, {
-  slidesPerView: 3,
-  spaceBetween:gap,
-  on: {
-    init:function () {
-      console.log('swiper init');
+		this.options = Object.assign(defaultOptions, options);
+		this.accordion = document.querySelector(selector);
+		this.control = this.accordion.querySelector('.accordion__control');
+		this.content = this.accordion.querySelector('.accordion__content');
+		this.event();
+    this.start();
+	}
 
-      const activeSlide = portSlider.querySelector('.swiper-slide-active');
-
-      const nextActiveSlide = activeSlide.nextElementSibling;
-      const nextNextActiveSlide = nextActiveSlide.nextElementSibling;
-
-      activeSlide.classList.add('slider-visible');
-      nextActiveSlide.classList.add('slider-visible');
-      nextNextActiveSlide.classList.add('slider-visible');
-
+  start() {
+    if (this.accordion) {
+      if (this.accordion.classList.contains('is-open')) {
+        this.open();
+      }
     }
-  },
-  navigation: {
-    nextEl:'.portfolio-section__next',
-    prevEl:'.portfolio-section__prev'
-  },
-});
-
-document.querySelector('.portfolio-section__prev').addEventListener('click',()=> {
-
-  const activeSlide = portSlider.querySelector('.swiper-slide-next');
-
-  document.querySelectorAll('.portfolio-section__items .swiper-slide').forEach(el => {
-    el.classList.remove('slider-visible');
-  });
-
-
-  if(activeSlide.previousElementSibling) {
-    const nextActiveSlide = activeSlide.previousElementSibling;
-    activeSlide.classList.add('slider-visible');
-    nextActiveSlide.classList.add('slider-visible');
-    activeSlide.nextElementSibling.classList.add('slider-visible');
   }
 
-});
+	event() {
+		console.log('event!');
 
-document.querySelector('.portfolio-section__next').addEventListener('click',()=> {
-  const activeSlide = portSlider.querySelector('.swiper-slide-active');
+		if (this.accordion) {
+			this.accordion.addEventListener('click', (e) => {
+				this.accordion.classList.toggle('open');
 
-  const nextActiveSlide = activeSlide.nextElementSibling;
-  const nextNextActiveSlide = nextActiveSlide.nextElementSibling;
+				if (this.accordion.classList.contains('open')) {
+					this.open();
+				} else {
+					this.close();
+				}
+			});
+		}
+	}
 
-  document.querySelectorAll('.portfolio-section__items .swiper-slide').forEach(el => {
-    el.classList.remove('slider-visible');
+	open() {
+		this.accordion.style.setProperty('--accordion-time', `${this.options.speed / 1000}s`);
+		this.accordion.classList.add('is-open');
+		this.control.setAttribute('aria-expanded', true);
+		this.content.setAttribute('aria-hidden', false);
+		this.content.style.maxHeight = this.content.scrollHeight + 'px';
+		this.options.isOpen(this);
+	}
+
+	close() {
+		this.accordion.classList.remove('is-open');
+		this.control.setAttribute('aria-expanded', false);
+		this.content.setAttribute('aria-hidden', true);
+		this.content.style.maxHeight = null;
+		this.options.isClose(this);
+	}
+}
+Swiper.use([Navigation, Pagination]);
+if(portSlider) {
+  const portfolioSlider = new Swiper(portSlider, {
+    slidesPerView: 3,
+    spaceBetween:gap,
+    on: {
+      init:function () {
+        console.log('swiper init');
+
+        const activeSlide = portSlider.querySelector('.swiper-slide-active');
+
+        const nextActiveSlide = activeSlide.nextElementSibling;
+        const nextNextActiveSlide = nextActiveSlide.nextElementSibling;
+
+        activeSlide.classList.add('slider-visible');
+        nextActiveSlide.classList.add('slider-visible');
+        nextNextActiveSlide.classList.add('slider-visible');
+
+      }
+    },
+    navigation: {
+      nextEl:'.portfolio-section__next',
+      prevEl:'.portfolio-section__prev'
+    },
   });
 
-  activeSlide.classList.add('slider-visible');
-  nextActiveSlide.classList.add('slider-visible');
-  nextNextActiveSlide.classList.add('slider-visible');
-});
+  document.querySelector('.portfolio-section__prev').addEventListener('click',()=> {
+
+    const activeSlide = portSlider.querySelector('.swiper-slide-next');
+
+    document.querySelectorAll('.portfolio-section__items .swiper-slide').forEach(el => {
+      el.classList.remove('slider-visible');
+    });
+
+
+    if(activeSlide.previousElementSibling) {
+      const nextActiveSlide = activeSlide.previousElementSibling;
+      activeSlide.classList.add('slider-visible');
+      nextActiveSlide.classList.add('slider-visible');
+      activeSlide.nextElementSibling.classList.add('slider-visible');
+    }
+
+  });
+
+  document.querySelector('.portfolio-section__next').addEventListener('click',()=> {
+    const activeSlide = portSlider.querySelector('.swiper-slide-active');
+
+    const nextActiveSlide = activeSlide.nextElementSibling;
+    const nextNextActiveSlide = nextActiveSlide.nextElementSibling;
+
+    document.querySelectorAll('.portfolio-section__items .swiper-slide').forEach(el => {
+      el.classList.remove('slider-visible');
+    });
+
+    activeSlide.classList.add('slider-visible');
+    nextActiveSlide.classList.add('slider-visible');
+    nextNextActiveSlide.classList.add('slider-visible');
+  });
+}
+
+
 
 
 const testimonialsSlider = new Swiper('.testimonials__items', {
@@ -79,17 +139,6 @@ const testimonialsSlider = new Swiper('.testimonials__items', {
   },
 });
 
-// const circle = document.querySelector('.progress');
-// const progressAnimation = () => {
-//    let percentageProgress = Math.floor(70);
-
-//    let radius = circle.getAttribute('r');
-//    let circleLength = 2 * Math.PI * radius;
-//    circle.setAttribute('stroke-dasharray',circleLength);
-//    circle.setAttribute('stroke-dashoffset',circleLength - circleLength * percentageProgress / 100);
-
-// };
-// progressAnimation();
 
 
 const circles = document.querySelectorAll('.facts-element__circle');
@@ -125,3 +174,17 @@ circles.forEach(el => {
   }
 
 });
+
+
+
+  if (document.querySelector('.we-offer')) {
+    const accordion1 = new GraphAccordion('.accordion-1', {
+      speed: 300
+    });
+
+    const accordion2 = new GraphAccordion('.accordion-2', {
+      speed: 300
+    });
+  }
+
+

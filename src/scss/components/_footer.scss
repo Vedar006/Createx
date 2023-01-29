@@ -3,12 +3,7 @@
   color:rgba( #fff,0.6);
   background-color: var(--color-ebony);
 
-  &__container {
-    display: grid;
-    grid-template-columns: repeat(12,1fr);
-    // grid-template-rows: repeat(3,1fr);
-    gap: var(--grid-gap);
-  }
+
 
   &__left {
     grid-column: 7 span;

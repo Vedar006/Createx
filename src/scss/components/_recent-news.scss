@@ -3,10 +3,7 @@
   padding-bottom: 120px;
   background-color: var(--light-color);
   &__list {
-    display: grid;
-    grid-template-columns: repeat(12,1fr);
     grid-template-rows: repeat(2,255px);
-    gap: var(--grid-gap);
     margin-bottom: 80px;
   }
 

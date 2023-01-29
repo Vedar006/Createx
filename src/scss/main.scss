@@ -6,6 +6,7 @@
 
 @import "./components/slider-nav";
 @import "./components/form-field";
+@import "./components/accordion";
 
 // подключения компонентов страницы(большие)
 @import "./components/header";
@@ -21,8 +22,10 @@
 @import "./components/contacts-section";
 @import "./components/footer";
 
-@import "./components/hero-services";
+@import "./components/page-hero";
 @import "./components/services-content";
+@import "./components/we-offer";
+@import "./components/how-we-do";
 // подключения компонентов страницы(малые)
 @import "./components/nav";
 @import "./components/header-contacts";
@@ -30,3 +33,4 @@
 @import "./components/breadcrumbs";
 @import "./components/learn-more";
 @import "./components/social";
+
