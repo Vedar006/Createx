@@ -2,23 +2,110 @@ import './_vendor';
 import vars from './_vars';
 import './_functions';
 import './_components';
-import Swiper, { Navigation, Pagination } from 'swiper';
+import Swiper, { Navigation, Pagination,Thumbs } from 'swiper';
+
 
 const portfolioTabsNav = document.querySelector('.portfolio-tabs-nav');
 const portfolioTabsItems = document.querySelectorAll('.portfolio-tabs__item');
 const portfolioTabsItemsVisible = document.querySelectorAll('.portfolio-tabs__item--visible');
 const portfolioTabsBtns = document.querySelectorAll('.portfolio-tabs-nav__btn');
 const loadMore = document.querySelector('.portfolio-more');
+const maxItems = 9;
 
-const isLoadMoreNeeded = (selector) => {
-  if(selector.length <= 9) {
-    loadMore.style.display = 'none';
 
-  }else {
-    loadMore.style.display = 'inline-flex';
+if(portfolioTabsNav) {
+  const isLoadMoreNeeded = (selector) => {
+    if(selector.length <= maxItems) {
+      loadMore.style.display = 'none';
+
+    }else {
+      loadMore.style.display = 'inline-flex';
+    }
+  };
+  const hideMoreItems = (selector) => {
+    if(selector.length > maxItems) {
+      const arr = Array.from(selector);
+      const hiddenItems = arr.slice(maxItems, selector.length);
+      hiddenItems.forEach((el) =>
+      {
+
+        el.classList.remove('portfolio-tabs__item--visible');
+        el.classList.remove('portfolio-tabs__item--visible-more');
+      });
+    }
+  };
+// Tabs
+portfolioTabsNav.addEventListener('click',(e)=> {
+
+  const target = e.target;
+  if(target.classList.contains('portfolio-tabs-nav__btn')) {
+
+    const path = target.dataset.path;
+
+    portfolioTabsBtns.forEach((el)=> {
+
+      el.classList.remove('portfolio-tabs-nav__btn--active');
+    });
+    target.classList.add('portfolio-tabs-nav__btn--active');
+    portfolioTabsItems.forEach((el) =>
+    {
+
+      el.classList.remove('portfolio-tabs__item--visible');
+      el.classList.remove('portfolio-tabs__item--visible-more');
+    });
+    document.querySelectorAll(`[data-target="${path}"]`).forEach((el) =>
+     {
+      el.closest('.portfolio-tabs__item').classList.add('portfolio-tabs__item--visible');
+    });
+
+
+    isLoadMoreNeeded(document.querySelectorAll(`[data-target="${path}"]`));
+    hideMoreItems(document.querySelectorAll('.portfolio-tabs__item--visible'));
+
+    if(path == 'all') {
+
+      portfolioTabsItems.forEach((el) =>
+      {
+
+        el.classList.add('portfolio-tabs__item--visible');
+
+      });
+      isLoadMoreNeeded(document.querySelectorAll('.portfolio-tabs__item--visible'));
+      hideMoreItems(document.querySelectorAll('.portfolio-tabs__item--visible'));
+
+    }
   }
-};
+});
+hideMoreItems(portfolioTabsItems);
+isLoadMoreNeeded(portfolioTabsItemsVisible);
 
+
+loadMore.addEventListener('click',(e)=> {
+
+const visibleItems = document.querySelectorAll('.portfolio-tabs__item--visible');
+
+const path = document.querySelector('.portfolio-tabs-nav__btn--active').dataset.path;
+if(path == 'all') {
+
+  portfolioTabsItems.forEach(el => {
+
+    el.classList.add('portfolio-tabs__item--visible-more');
+
+    loadMore.style.display = 'none';
+  });
+
+
+
+}else {
+
+  document.querySelectorAll(`[data-target="${path}"]`).forEach(el => {
+
+    el.closest('.portfolio-tabs__item').classList.add('portfolio-tabs__item--visible-more');
+  });
+  loadMore.style.display = 'none';
+}
+});
+}
 const portSlider = document.querySelector('.portfolio-section__items');
 const relatedSlider = document.querySelector('.related-projects__items');
 const bodyStyles = window.getComputedStyle(document.body);
@@ -261,72 +348,38 @@ circles.forEach(el => {
 
 
 
-// Tabs
-  portfolioTabsNav.addEventListener('click',(e)=> {
-
-    const target = e.target;
-    if(target.classList.contains('portfolio-tabs-nav__btn')) {
-
-      const path = target.dataset.path;
-
-      portfolioTabsBtns.forEach((el)=> {
-
-        el.classList.remove('portfolio-tabs-nav__btn--active');
-      });
-      target.classList.add('portfolio-tabs-nav__btn--active');
-      portfolioTabsItems.forEach((el) =>
-      {
-
-        el.classList.remove('portfolio-tabs__item--visible');
-        el.classList.remove('portfolio-tabs__item--visible-more');
-      });
-      document.querySelectorAll(`[data-target="${path}"]`).forEach((el) =>
-       {
-        el.closest('.portfolio-tabs__item').classList.add('portfolio-tabs__item--visible');
-      });
 
 
-      isLoadMoreNeeded(document.querySelectorAll(`[data-target="${path}"]`));
 
-      if(path == 'all') {
+  const workImages = document.querySelector('.work-images-slider');
 
-        portfolioTabsItems.forEach((el) =>
-        {
+  if (workImages) {
+    const workSlider = new Swiper('.work-images-nav', {
+      spaceBetween: 20,
+      slidesPerView: 3,
+      freeMode: true,
 
-          el.classList.add('portfolio-tabs__item--visible');
-
-        });
-        isLoadMoreNeeded(document.querySelectorAll('.portfolio-tabs__item--visible'));
-
+      watchSlidesProgress: true,
+      breakpoints: {
+        576: {
+          slidesPerView: 6
+        },
+        768: {
+          slidesPerView: 10,
+        }
       }
-    }
-  });
-
-  isLoadMoreNeeded(portfolioTabsItemsVisible);
-
-
-loadMore.addEventListener('click',(e)=> {
-
-  const visibleItems = document.querySelectorAll('.portfolio-tabs__item--visible');
-
-  const path = document.querySelector('.portfolio-tabs-nav__btn--active').dataset.path;
-  if(path == 'all') {
-
-    portfolioTabsItems.forEach(el => {
-
-      el.classList.add('portfolio-tabs__item--visible-more');
-
-      loadMore.style.display = 'none';
     });
+    const workSlidesNav = new Swiper(workImages, {
+      spaceBetween: 20,
+      slidesPerView: 1,
 
-
-
-  }else {
-
-    document.querySelectorAll(`[data-target="${path}"]`).forEach(el => {
-
-      el.closest('.portfolio-tabs__item').classList.add('portfolio-tabs__item--visible-more');
+      navigation: {
+        nextEl: ".work-images__next",
+        prevEl: ".work-images__prev",
+      },
+      thumbs: {
+        swiper: workSlider,
+      },
     });
-    loadMore.style.display = 'none';
   }
-});
+

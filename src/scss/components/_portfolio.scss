@@ -67,9 +67,7 @@ transition: color .3s ease-in-out,background-color .3s ease-in-out;
     grid-column: 4 span;
     display: none;
 
-    &:nth-child(n + 10) {
-      display: none;
-    }
+   
 
     &--visible {
       display: block;
