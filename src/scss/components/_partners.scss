@@ -4,9 +4,17 @@
   &__list {
     display: grid;
     grid-template-columns: repeat(6,1fr);
-    gap: 102px;
+    column-gap: 102px;
+    row-gap: 40px;
   }
   &__title {
     margin-bottom: 60px;
+  }
+  &-about {
+    padding: 120px 0;
+    background-color: var(--light-color);
+    .partners__title {
+      margin-bottom: 25px;
+    }
   }
 }
