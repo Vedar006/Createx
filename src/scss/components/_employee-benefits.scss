@@ -1,0 +1,99 @@
+.employee-benefits {
+  background-color: var(--light-color);
+  padding-bottom: 153px;
+  &__list {
+
+   --mission-gap:94px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    margin-bottom: 27px;
+    gap: calc(var(--mission-gap) * 2);
+
+  }
+  &__item {
+    position: relative;
+
+    padding-top: 71px;
+    text-align: center;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: 48px 48px;
+    &:not(:last-child) {
+      &::after {
+        content:"";
+        position: absolute;
+        right: calc(-1 * var(--mission-gap));
+        top: 0;
+        width: 1px;
+        height: 100%;
+        background-image: url("../img/divider.svg");
+        background-position:center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+    }
+    &--training {
+      background-image: url("../img/benefits-icon-1.svg");
+    }
+    &--growth {
+      background-image: url("../img/benefits-icon-2.svg");
+    }
+    &--salary {
+      background-image: url("../img/benefits-icon-3.svg");
+    }
+  }
+  &__subtitle {
+    margin: 0;
+    margin-bottom: 10px;
+font-weight: 700;
+font-size: 20px;
+line-height: 150%;
+color: var(--color-ebony);
+
+  }
+  &__descr {
+    margin: 0;
+font-size: 16px;
+line-height: 160%;
+color: var(--color-storm);
+
+  }
+
+}
+.know-form {
+  position: relative;
+  top: 92px;
+  padding: 48px 60px;
+  background: var(--light-color);
+
+box-shadow: 0px 80px 80px -20px rgba(154, 156, 165, 0.08),
+ 0px 30px 24px -10px rgba(154, 156, 165, 0.05),
+  0px 12px 10px -6px rgba(154, 156, 165, 0.04),
+  0px 4px 4px -4px rgba(30, 33, 44, 0.03);
+
+border-radius: 4px;
+&__title {
+  margin: 0;
+  margin-bottom: 33px;
+  text-align: center;
+
+
+font-weight: 700;
+font-size: 28px;
+line-height: 150%;
+
+color: var(--color-ebony);
+
+}
+
+  &__content {
+    display: flex;
+    align-items: flex-end;
+  }
+  &__field {
+    margin-right: 24px;
+  }
+  &__btn {
+    padding: 11px 29px;
+  }
+}
