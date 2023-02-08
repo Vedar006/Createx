@@ -1,0 +1,123 @@
+.post {
+  &__cover {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    margin-top: -79px;
+  }
+
+  &__wrapper {
+    max-width: 840px;
+    padding: 0 15px;
+    margin: 0 auto;
+
+
+  }
+  &__share {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 160%;
+    color:var(--color-ebony);
+    span {
+      margin-right: 10px;
+    }
+    svg {
+      fill: var(--color-storm);
+      opacity: 1;
+    }
+  }
+  &__content {
+    padding-top: 80px;
+    padding-bottom: 60px;
+
+    * {
+      margin-bottom: 28px;
+      font-size: 16px;
+      line-height: 160%;
+      color:var(--color-gray);
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    h2 {
+      margin: 0;
+      margin-bottom: 25px;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 150%;
+      color: var(--color-ebony);
+
+    }
+    h3 {
+      margin: 0;
+      margin-bottom: 25px;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 150%;
+      color: var(--color-ebony);
+
+    }
+    p {
+      margin: 0;
+      margin-bottom: 28px;
+      font-weight:
+      fz16;
+      line-height: 160%;
+      color:var(--color-gray);
+    }
+    blockquote {
+      margin: 0;
+      margin-bottom: 28px;
+      padding: 21px 58px;
+      padding-right: 5px;
+      position: relative;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 150%;
+      color:var(--color-ebony);
+      &::before {
+        content:"";
+        position: absolute;
+        left: 0;
+        top: 21px;
+        width: 28px;
+        height: 20px;
+        background-image: url("../img/braces.svg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      margin-bottom: 28px;
+      list-style-type: none;
+
+      font-size: 16px;
+      line-height: 160%;
+      color:var(--color-gray);
+      li {
+        position: relative;
+        padding-left: 32px;
+        &::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 4px;
+          width: 16px;
+          height: 16px;
+          background-image: url("../img/check-list.svg");
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+        &:not(:last-child) {
+          margin-bottom: 3px;
+        }
+      }
+    }
+  }
+}
