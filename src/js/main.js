@@ -3,6 +3,8 @@ import vars from './_vars';
 import './_functions';
 import './_components';
 import Swiper, { Navigation, Pagination,Thumbs } from 'swiper';
+import Choices from 'choices.js';
+
 
 
 const portfolioTabsNav = document.querySelector('.portfolio-tabs-nav');
@@ -426,3 +428,15 @@ circles.forEach(el => {
     });
 
   }
+// select
+const selects = document.querySelectorAll('.form-field__select');
+selects.forEach(el => {
+
+  new Choices(el, {
+
+    shouldSort:false,
+    position:'bottom',
+    searchEnabled:true
+  });
+});
+
