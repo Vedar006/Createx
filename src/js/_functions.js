@@ -3,7 +3,7 @@
 
 // Определение операционной системы на мобильных
 import { mobileCheck } from "./functions/mobile-check";
-console.log(mobileCheck())
+console.log(mobileCheck());
 
 // Определение ширины экрана
 // import { isMobile, isTablet, isDesktop } from './functions/check-viewport';
@@ -48,8 +48,8 @@ console.log(mobileCheck())
 // createPopper(el, tooltip, {
 //   placement: 'right'
 // });
-
-
+// import GraphModal from 'graph-modal';
+// const modal = new GraphModal();
 
 
 // Подключение анимаций по скроллу

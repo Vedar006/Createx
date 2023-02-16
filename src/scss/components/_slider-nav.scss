@@ -18,12 +18,21 @@
       color: inherit;
       fill: currentColor;
     }
+    &:focus {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
 
     &:hover {
       color:var(--light-color);
       background-color: var(--color-primary);
 
     }
+    &:active {
+      color:var(--light-color);
+      background-color:var(--color-active);
+    }
+
   }
 }
 .slider-nav__btn.swiper-button-disabled {

@@ -30,6 +30,7 @@
   }
   &__address {
     grid-column: 4 span;
+
   }
 
   &__nav {
@@ -121,6 +122,18 @@ color: var(--light-color);
     }
     a {
       color: inherit;
+      transition: color 0.3s ease-in-out;
+
+      &:focus {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+      }
+      &:hover {
+        color:var(--light-color);
+      }
+      &:active {
+        color:var(--light-color);
+      }
     }
   }
   &__name {
@@ -146,5 +159,17 @@ color: var(--light-color);
     font-size: 16px;
     line-height: 160%;
     color:inherit;
+    transition: color 0.3s ease-in-out;
+
+      &:focus {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+      }
+      &:hover {
+        color:var(--light-color);
+      }
+      &:active {
+        color:var(--light-color);
+      }
   }
 }

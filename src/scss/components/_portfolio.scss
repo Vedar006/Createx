@@ -67,7 +67,7 @@ transition: color .3s ease-in-out,background-color .3s ease-in-out;
     grid-column: 4 span;
     display: none;
 
-   
+
 
     &--visible {
       display: block;
@@ -85,6 +85,7 @@ transition: color .3s ease-in-out,background-color .3s ease-in-out;
   font-size: 16px;
   line-height: 160%;
   color:var(--color-gray);
+  transition: color 0.3s ease-in-out;
   svg {
     margin-right: 16px;
     width: 24px;
@@ -92,5 +93,26 @@ transition: color .3s ease-in-out,background-color .3s ease-in-out;
     object-fit: cover;
     color:inherit;
     fill: currentColor;
+  }
+  &:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+  &:hover {
+    color:var(--color-primary);
+  }
+  &:active {
+    color:var(--color-active);
+  }
+}
+.portfolio-tabs-nav__btn {
+  &:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+  &:hover {
+    .portfolio-tabs-nav__text {
+      color: var(--color-ebony);
+    }
   }
 }

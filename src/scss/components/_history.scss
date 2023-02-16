@@ -69,6 +69,16 @@
       height: 8px;
       background-color: currentColor;
     }
+    &:focus {
+      outline: none;
+      color:var(--color-primary);
+    }
+    &:hover {
+      color:var(--color-primary);
+    }
+    &:active {
+      color:var(--color-active);
+    }
 
     &--active {
       color: var(--color-primary);

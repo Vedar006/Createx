@@ -33,6 +33,18 @@
     text-align: center;
     color: #9a9ca5;
     transition: color 0.3s ease-in-out;
+    transition: color 0.3s ease-in-out;
+
+    &:focus {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+    &:hover {
+      color:var(--color-primary);
+    }
+    &:active {
+      color:var(--color-active);
+    }
 
     &--active {
       color: var(--color-primary);
@@ -80,6 +92,18 @@
       height: 24px;
       object-fit: cover;
       fill: currentColor;
+    }
+    transition: color 0.3s ease-in-out;
+
+    &:focus {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+    &:hover {
+      color:var(--color-primary);
+    }
+    &:active {
+      color:var(--color-active);
     }
 
     &--active {

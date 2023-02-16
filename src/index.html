@@ -3,7 +3,7 @@
 
 @include('partials/head.html')
 
-<body class="page__body">
+<body class="page__body" id="page">
   <div class="site-container">
     @include('partials/header.html')
     <main class="main">
@@ -17,7 +17,7 @@
       @include('partials/facts.html')
       @include('partials/recent-news.html')
       @include('partials/contacts-section.html')
-
+     
       <!-- <picture>
 
         <source srcset="img/cover.avif" type="image/avif">
@@ -27,8 +27,10 @@
 
 
     </main>
+    <!-- 1:38:00 -->
 
     @include('partials/footer.html')
+    
     <!-- @include('html/h1.html') пример include -->
   </div>
 </body>

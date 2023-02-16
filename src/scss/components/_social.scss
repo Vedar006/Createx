@@ -18,6 +18,21 @@
       object-fit: cover;
       fill: var(--light-color);
       opacity: 0.6;
+      transition: opacity 0.3s ease-in-out;
+    }
+    &:focus {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+    &:hover {
+      svg {
+      opacity: 1;
+      }
+    }
+    &:active {
+      svg {
+        opacity: 1;
+        }
     }
   }
 }

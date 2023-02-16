@@ -1,14 +1,74 @@
 .hero {
-
-  padding-top: 220px;
-  padding-bottom: 354px;
-  background-image: url("../img/hero/bg-hero.jpg");
-  background-position:center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-color:var(--color-gray);
   &__content {
     max-width: 590px;
+  }
+  &__next {
+    position: absolute;
+    right: 32px;
+    top: 50%;
+    z-index: 10;
+    background-color: var(--light-color);
+    transform: translateY(-50%);
+  }
+  &__prev {
+    position: absolute;
+    left: 32px;
+    top: 50%;
+    z-index: 10;
+    background-color: var(--light-color);
+    transform: translateY(-50%);
+  }
+  &__pag {
+    counter-reset: pag;
+    left:calc((100% - 1260px) / 2) !important;
+    bottom:120px !important;
+    display: flex;
+
+    .swiper-pagination-bullet {
+      display: flex;
+      flex-direction: column;
+
+      border-radius: 0;
+      opacity: 1;
+      width: 178px;
+      height: auto;
+      text-align: left;
+      background-color:transparent;
+      &::before {
+        counter-increment: pag;
+        content: "0"counter(pag);
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 150%;
+        color: rgba(#fff, 0.3);
+        transition: color 0.3s ease-in-out;
+      }
+      &::after {
+        display: none;
+
+      }
+    }
+  }
+  &__bar {
+    position: relative;
+    overflow: hidden;
+    border-radius: 100%;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(#fff,0.3);
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--light-color);
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform var(--hero-slider-speed) ease-in-out;
+
+    }
   }
   &__btns {
     .btn {
@@ -17,4 +77,30 @@
       }
     }
   }
+}
+.swiper-pagination-bullet-active {
+  &::before {
+    color:var(--light-color) !important;
+  }
+  .hero__bar {
+    &::after {
+      transform: scaleX(1);
+    }
+
+  }
+}
+.hero-slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+}
+.hero-slide {
+  padding-top: 220px;
+  padding-bottom: 354px;
+  background-image: url("../img/hero/bg-hero.jpg");
+  background-position:center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color:var(--color-gray);
 }

@@ -4,8 +4,9 @@ import './_functions';
 import './_components';
 import Swiper, { Navigation, Pagination,Thumbs } from 'swiper';
 import Choices from 'choices.js';
+import SmoothScroll from 'smooth-scroll';
 
-
+import GraphModal from 'graph-modal';
 
 const portfolioTabsNav = document.querySelector('.portfolio-tabs-nav');
 const portfolioTabsItems = document.querySelectorAll('.portfolio-tabs__item');
@@ -440,3 +441,103 @@ selects.forEach(el => {
   });
 });
 
+
+// hero-slider
+const heroSliderSpeed = 1500;
+
+const bodyStyless = window.getComputedStyle(document.body);
+const fooBar = bodyStyles.getPropertyValue('--hero-slider-speed');
+
+document.body.style.setProperty('--hero-slider-speed',heroSliderSpeed + 'ms');
+
+const heroSlider = new Swiper('.hero-slider', {
+  slidesPerView: 1,
+
+  navigation: {
+    nextEl:'.hero__next',
+    prevEl:'.hero__prev'
+  },
+  speed:heroSliderSpeed,
+  autoplay: {
+ delay:1000
+  },
+  pagination: {
+    el:'.hero__pag',
+    type:'bullets',
+    clickable:true
+  },
+  on:{
+    init:function() {
+      const paginationBullets = document.querySelectorAll('.hero__pag .swiper-pagination-bullet');
+
+
+      paginationBullets.forEach(el => {
+
+        el.innerHTML = `<span class="hero__bar"></span>`;
+      });
+
+
+
+    }
+  }
+});
+
+
+// VideoBlock
+const videoBlock = document.querySelector('.video-block');
+
+if(videoBlock) {
+  const video = videoBlock.querySelector('video');
+const playBtn = videoBlock.querySelector('.video-block__play');
+const mutedBtn = videoBlock.querySelector('.video-block__play');
+  playBtn.addEventListener('click',()=> {
+
+    videoBlock.classList.add('video-block--played');
+    video.play();
+    video.controls = true;
+
+    playBtn.classList.add('video-block__play--played');
+
+  });
+
+  video.onpause = function() {
+    videoBlock.classList.remove('video-block--played');
+    video.controls = false;
+    playBtn.classList.remove('video-block__play--played');
+  };
+}
+
+
+const scroll = new SmoothScroll('.to-top');
+const toTop = document.querySelector('.to-top');
+let heroHeight;
+if(document.querySelector('.hero')) {
+  heroHeight = document.querySelector('.hero').offsetHeight;
+}
+
+if(document.querySelector('.page-hero')) {
+  heroHeight = document.querySelector('.page-hero').offsetHeight;
+}
+
+
+const isVisibleToTop = (y = 0) => {
+  if(y >= heroHeight) {
+
+    toTop.classList.add('to-top--active');
+  }else {
+    toTop.classList.remove('to-top--active');
+  }
+
+};
+isVisibleToTop(window.scrollY);
+window.addEventListener('scroll',()=> {
+
+  let y = window.scrollY;
+
+  isVisibleToTop(y);
+});
+
+// modals
+
+
+const modal = new GraphModal();

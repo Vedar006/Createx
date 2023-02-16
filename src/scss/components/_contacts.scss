@@ -81,6 +81,13 @@
   .choices {
     width: 100%;
   }
+  .is-focused {
+
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+
+
+  }
   .choices__inner {
     padding: 0;
     margin: 0;
@@ -89,7 +96,7 @@
     height: 52px;
     background-color: var(--color-athens);
   }
-  .choices__placeholder {
+.choices__placeholder {
     opacity: 1;
     font-size: 16px;
     line-height: 160%;

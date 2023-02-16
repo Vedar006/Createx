@@ -152,9 +152,21 @@ a {
 
   text-transform: uppercase;
   color:var(--light-color);
+  transition: background-color 0.3s ease-in-out,border-color 0.3s ease-in-out;
   &--fill {
 
     background-color:var(--color-primary);
+    &:focus {
+
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+    &:hover {
+      background-color: var(--color-active);
+    }
+    &:active {
+      background-color: var(--color-active);
+    }
   }
   &--stroke {
 
@@ -166,6 +178,19 @@ a {
     &-primary {
       color: var(--color-primary);
       border-color: var(--color-primary);
+        }
+        &:focus {
+
+          outline: 2px solid var(--color-primary);
+          outline-offset: 2px;
+        }
+        &:hover {
+        border-color: var(--color-primary);
+          background-color: var(--color-primary);
+        }
+        &:active {
+          border-color: var(--color-primary);
+          background-color: var(--color-active);
         }
   }
 }
@@ -201,6 +226,10 @@ color: var(--color-storm);
   text-align: center;
 }
 .custom-checkbox {
+  &__input {
+    position: absolute;
+    opacity: 0;
+  }
  &__text {
   display: inline-block;
   position: relative;
@@ -246,6 +275,30 @@ opacity: 1;
 }
 
 }
+.custom-file {
+  cursor: pointer;
+  &__input {
+    position: absolute;
+    opacity: 0;
+  }
+  &__text {
+   display: inline-block;
+   position: relative;
+   padding-left: 27px;
+   font-size: 14px;
+   line-height: 170%;
+   color:var(--color-gray);
+   background-image: url("../img/Attach.svg");
+  background-position: left center;
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  }
+
+ &__input:focus+&__text {
+   outline: 3px solid var(--color-primary);
+ }
+
+ }
 .custom-radio {
   &__text {
    display: inline-block;
@@ -296,4 +349,140 @@ opacity: 1;
   display: grid;
   grid-template-columns: repeat(12,1fr);
   gap: var(--grid-gap);
+}
+.to-top {
+  display: flex;
+  align-items: flex-end;
+  gap:16px;
+  position: fixed;
+  z-index: 1000;
+  bottom: 80px;
+  right: calc((100% - 1230px) / 2);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  &__text {
+
+    font-size: 14px;
+    line-height: 150%;
+    text-transform: uppercase;
+color:var(--light-color);
+text-shadow: 3px 3px 11px rgba(150,150,150,1);
+  }
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background-color: var(--color-primary);
+    transition: background-color 0.3s ease-in-out;
+    svg {
+      width: 24px;
+      height: 24px;
+      object-fit: cover;
+    }
+    &:hover {
+      background-color: var(--color-active);
+    }
+
+
+  }
+  &--active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+.site-modal {
+  padding: 48px;
+  width: 486px;
+  border-radius: 4px;
+  .graph-modal__close {
+    right: 24px;
+    top: 24px;
+    width: 24px;
+    height: 24px;
+    background-image: url("../img/close-modal.svg");
+  }
+  &__title {
+    margin: 0;
+    margin-bottom: 24px;
+
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 150%;
+  color:var(--color-ebony);
+  text-align: center;
+  }
+  &__field {
+    margin-bottom: 20px;
+  }
+
+  &__btn {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  &__radio {
+    &:not(:last-child) {
+      margin-right: 22px;
+    }
+  }
+  .choices {
+    width: 100%;
+  }
+  .is-focused {
+
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+
+
+  }
+  .choices__inner {
+    padding: 0;
+    margin: 0;
+    border: 1px solid #d7dadd;
+    border-radius: 4px;
+    height: 52px;
+    background-color: var(--color-athens);
+  }
+.choices__placeholder {
+    opacity: 1;
+    font-size: 16px;
+    line-height: 160%;
+    color:#9a9ca5;
+  }
+  .choices[data-type*=select-one] .choices__inner {
+    padding-bottom: 0;
+  }
+  .choices__list--single {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-left: 15px;
+  }
+  .choices[data-type*=select-one]::after {
+    right: 19px;
+    margin-top: 0;
+    border: none;
+    width: 14px;
+    height: 7px;
+    background-image: url("../img/angle-down.svg");
+    background-position:center;
+    transform: translateY(-50%);
+  }
+  .choices[data-type*=select-one].is-open:after {
+    margin-top: -9px;
+    transform: rotate(180deg) translateY(-50%);
+  }
+  .choices__list--dropdown .choices__item--selectable::after {
+    display: none;
+  }
+  .choices__list--single .choices__placeholder {
+    font-size: 16px;
+    line-height: 160%;
+    color:#9a9ca5;
+    opacity: 1;
+  }
 }

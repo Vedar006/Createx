@@ -92,6 +92,10 @@ box-shadow: var(--main-shadow);
       font-size: 12px;
       line-height: 36px;
       letter-spacing: 0.5px;
+      &:focus {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+      }
 
     }
   }
