@@ -9,6 +9,9 @@
     z-index: 10;
     background-color: var(--light-color);
     transform: translateY(-50%);
+    @include big-desktop {
+      display: none;
+    }
   }
   &__prev {
     position: absolute;
@@ -17,6 +20,9 @@
     z-index: 10;
     background-color: var(--light-color);
     transform: translateY(-50%);
+    @include big-desktop {
+      display: none;
+    }
   }
   &__pag {
     counter-reset: pag;
@@ -47,7 +53,27 @@
         display: none;
 
       }
+      @include small-tablet {
+        width: 25%;
+      }
+
     }
+    @include big-desktop {
+
+      left: 3% !important;
+    }
+    @include minidesk {
+      left:15px !important;
+    }
+    @include small-tablet {
+      bottom:50px !important;
+      width: calc(100% - 30px ) !important;
+
+    }
+    @include mobile {
+      display: none;
+    }
+
   }
   &__bar {
     position: relative;
@@ -74,6 +100,10 @@
     .btn {
       &:not(:last-child) {
         margin-right: 20px;
+        @include mobile {
+          margin-right: 0;
+          margin-bottom: 20px;
+        }
       }
     }
   }
@@ -103,4 +133,11 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-color:var(--color-gray);
+  @include small-tablet {
+    padding-top: 200px;
+    padding-bottom: 200px;
+  }
+  @include mobile {
+    padding: 100px 0;
+  }
 }

@@ -12,6 +12,9 @@
     position: relative;
     font-size: 0;
     margin-bottom: 12px;
+    @include tablet {
+      text-align: center;
+    }
   }
   &__socials {
     position: absolute;
@@ -37,6 +40,9 @@
         opacity: 1;
          visibility: visible;
       }
+    }
+    @include tablet {
+      grid-column: 6 span;
     }
   }
   &__link {
@@ -87,5 +93,5 @@
     line-height: 160%;
     color:var(--color-storm);
   }
-  
+
 }

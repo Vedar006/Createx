@@ -26,6 +26,19 @@
     &--finish {
       background-image: url("../img/pantone.svg");
     }
+
+    @include tablet {
+
+      grid-column: 6 span;
+    }
+  }
+  &__image {
+    @include minidesk {
+      max-width: 45%;
+    }
+    @include tablet  {
+      max-width: 100%;
+    }
   }
   &__value {
     margin-bottom: 10px;
@@ -33,6 +46,10 @@
     font-size: 46px;
     line-height: 130%;
     color:var(--color-primary);
+@include minidesk {
+  font-size: 36px;
+  line: height 54px;
+}
   }
   &__text {
     font-size: 14px;
@@ -53,11 +70,28 @@
     border-radius: 4px;
     box-shadow: var(--main-shadow);
     background: var(--light-color);
+    @include minidesk {
+
+      width: 55%;
+      left: 0;
+      top: 0;
+    }
+
+    @include tablet  {
+      width: 100%;
+    }
+    @include mobile {
+      padding: 15px;
+    }
   }
   &__content {
 
     display: flex;
     align-items: flex-start;
+
+    @include small-tablet {
+      display: block;
+    }
   }
   &__list {
     margin-bottom: 260px;
@@ -82,6 +116,9 @@
       background-position:center;
       background-size: cover;
       background-repeat: no-repeat;
+      @include mobile {
+        left: 0;
+      }
     }
     p {
       margin: 0;
@@ -92,6 +129,11 @@
       &:not(:last-child) {
         margin-bottom: 30px;
       }
+    }
+    @include mobile {
+      padding: 0;
+      padding-top: 40px;
+      padding-bottom: 20px;
     }
   }
   &__footer {
@@ -104,6 +146,10 @@
 
     background-size: 100px 68px;
     background-repeat: no-repeat;
+    @include mobile {
+      padding-bottom: 120px;
+      background-position: bottom 30px center;
+    }
   }
   &__author {
     display: block;

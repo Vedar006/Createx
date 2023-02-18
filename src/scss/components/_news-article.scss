@@ -7,6 +7,12 @@
   &__text {
     padding: 20px 24px;
   }
+  &__image {
+    @include tablet {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
 
   &__title {
 
@@ -45,14 +51,14 @@ transition: color 0.3s ease-in-out;
   }
 
   &--small {
-    .recent-article__descr {
+    .news-article__descr {
       display: none;
     }
 
-    .recent-article__text {
+    .news-article__text {
      padding: 12px 24px;
     }
-    .recent-article__title {
+    .news-article__title {
       margin-bottom: 9px;
     }
   }

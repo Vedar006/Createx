@@ -49,4 +49,7 @@ border-radius: 4px;
     font-size: 14px;
     letter-spacing: 0.5px;
   }
+  @include mobile {
+    padding: 15px;
+  }
 }

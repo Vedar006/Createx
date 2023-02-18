@@ -6,6 +6,21 @@
   }
   &__nav {
     margin-left: -112px;
+    @include minidesk {
+      margin-left: 0;
+    }
+    @include tablet {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 80%;
+      height: 100vh;
+      padding: 50px;
+      display: none;
+      background-color: var(--light-color);
+      z-index: 1000;
+
+    }
   }
   &--main {
     background-color: var(--light-color);
@@ -25,4 +40,14 @@
     outline-offset: 2px;
 
   }
+
+  @include tablet {
+    max-width: none;
+  }
+  @include minidesk {
+    max-width: 100px;
+  }
+}
+.header__nav.menu--active {
+  display: block;
 }

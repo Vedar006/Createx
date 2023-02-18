@@ -124,6 +124,14 @@ a {
   &--home {
     color:var(--light-color);
   }
+  @include small-tablet {
+    font-size: 60px;
+    line-height: 75px;
+  }
+  @include mobile {
+    font-size: 35px;
+    line-height: 45px;
+  }
 }
 .main-descr {
   margin: 0;
@@ -133,6 +141,10 @@ a {
   &--home {
     margin-bottom: 60px;
     color:var(--light-color);
+  }
+  @include mobile {
+    font-size: 16px;
+    line-height: 24px;
   }
 }
 .btn {
@@ -206,6 +218,10 @@ color: var(--color-ebony);
 &--center {
   text-align: center;
 }
+@include mobile {
+  font-size: 28px;
+  line-height: 40px;
+}
 
 }
 .descr {
@@ -217,9 +233,20 @@ color: var(--color-storm);
 &--center {
   text-align: center;
 }
+@include mobile {
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 25px;
+}
 }
 .section-offset {
   padding-top: 120px;
+  @include small-tablet {
+    padding-top: 60px;
+  }
+  @include mobile {
+    padding-top: 40px;
+  }
 }
 .centered {
   width: 100%;
@@ -349,6 +376,9 @@ opacity: 1;
   display: grid;
   grid-template-columns: repeat(12,1fr);
   gap: var(--grid-gap);
+  @include mobile {
+    grid-template-columns: repeat(4,1fr);
+  }
 }
 .to-top {
   display: flex;
@@ -393,6 +423,10 @@ text-shadow: 3px 3px 11px rgba(150,150,150,1);
   &--active {
     opacity: 1;
     visibility: visible;
+  }
+  @include big-desktop {
+    right: 20px;
+    bottom:20px;
   }
 }
 .site-modal {
@@ -486,3 +520,12 @@ text-shadow: 3px 3px 11px rgba(150,150,150,1);
     opacity: 1;
   }
 }
+.burger {
+   @include burger;
+  display: none;
+
+  @include tablet {
+    display: block;
+  }
+  }
+

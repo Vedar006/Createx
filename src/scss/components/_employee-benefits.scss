@@ -9,6 +9,19 @@
     margin-bottom: 27px;
     gap: calc(var(--mission-gap) * 2);
 
+    @include tablet {
+      --mission-gap:30px;
+
+    }
+    @include small-tablet {
+      --mission-gap:10px;
+
+    }
+    @include mobile {
+      display: block;
+    }
+
+
   }
   &__item {
     position: relative;
@@ -41,6 +54,11 @@
     &--salary {
       background-image: url("../img/benefits-icon-3.svg");
     }
+    @include mobile {
+      &:not(:last-child ) {
+        margin-bottom: 30px;
+      }
+    }
   }
   &__subtitle {
     margin: 0;
@@ -57,6 +75,10 @@ font-size: 16px;
 line-height: 160%;
 color: var(--color-storm);
 
+  }
+
+  @include mobile {
+    padding-bottom: 40px;
   }
 
 }
@@ -89,11 +111,35 @@ color: var(--color-ebony);
   &__content {
     display: flex;
     align-items: flex-end;
+    @include tablet {
+      justify-content: space-between;
+      flex-wrap: wrap;
+      & > * {
+        margin-right: 0 !important;
+        margin-bottom: 20px;
+        width: 49%;
+        flex-grow: initial;
+
+        .form-field__input {
+          width: 100%;
+        }
+        @include mobile {
+          width: 100%;
+        }
+      }
+    }
+    @include mobile {
+      display: block;
+    }
   }
   &__field {
     margin-right: 24px;
   }
   &__btn {
     padding: 11px 29px;
+  }
+  @include mobile {
+    top:initial;
+    padding: 10px 15px;
   }
 }

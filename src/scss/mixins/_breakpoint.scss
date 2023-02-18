@@ -6,6 +6,12 @@
   }
 }
 
+@mixin minidesk {
+  @media (max-width: (1200px)) {
+    @content;
+  }
+}
+// middledesk
 @mixin big-desktop {
   @media (max-width: (1440px)) {
     @content;
@@ -17,7 +23,7 @@
     @content;
   }
 }
-
+// minitablet
 @mixin small-tablet {
   @media (max-width: (768px)) {
     @content;

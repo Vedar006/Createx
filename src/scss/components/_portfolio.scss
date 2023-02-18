@@ -17,6 +17,15 @@
     &:not(:last-child) {
       margin-right: var(--gap);
     }
+    @include small-tablet {
+      margin-bottom: 20px;
+      width: calc((100% - (var(--gap) * 2)) / 3);
+    }
+
+    @include mobile {
+      margin-right: 0 !important;
+      width: 100%;
+    }
   }
 
   &__btn {
@@ -60,6 +69,13 @@ transition: color .3s ease-in-out,background-color .3s ease-in-out;
     color: #9a9ca5;
     transition: color .3s ease-in-out;
     pointer-events: none;
+  }
+
+  @include small-tablet {
+    transform: none;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
 .portfolio-tabs {

@@ -8,6 +8,8 @@ import SmoothScroll from 'smooth-scroll';
 
 import GraphModal from 'graph-modal';
 
+import { burger } from './functions/burger';
+
 const portfolioTabsNav = document.querySelector('.portfolio-tabs-nav');
 const portfolioTabsItems = document.querySelectorAll('.portfolio-tabs__item');
 const portfolioTabsItemsVisible = document.querySelectorAll('.portfolio-tabs__item--visible');
@@ -138,7 +140,7 @@ class GraphAccordion {
   }
 
 	event() {
-		console.log('event!');
+
 
 		if (this.accordion) {
 			this.accordion.addEventListener('click', (e) => {
@@ -173,11 +175,12 @@ class GraphAccordion {
 Swiper.use([Navigation, Pagination]);
 if(portSlider) {
   const portfolioSlider = new Swiper(portSlider, {
-    slidesPerView: 3,
+    slidesPerView: 1,
+    slidesPerView: 1,
     spaceBetween:gap,
     on: {
       init:function () {
-        console.log('swiper init');
+
 
         const activeSlide = portSlider.querySelector('.swiper-slide-active');
 
@@ -194,6 +197,14 @@ if(portSlider) {
       nextEl:'.portfolio-section__next',
       prevEl:'.portfolio-section__prev'
     },
+    breakpoints: {
+      576: {
+        slidesPerView:2
+      },
+      768:{
+        slidesPerView:3,
+      }
+    }
   });
 
   document.querySelector('.portfolio-section__prev').addEventListener('click',()=> {
@@ -231,11 +242,11 @@ if(portSlider) {
 }
 if(relatedSlider) {
   const relatedProjSlider = new Swiper(relatedSlider, {
-    slidesPerView: 3,
+    slidesPerView: 1,
     spaceBetween:gap,
     on: {
       init:function () {
-        console.log('swiper init');
+
 
         const activeSlide = relatedSlider.querySelector('.swiper-slide-active');
 
@@ -252,6 +263,14 @@ if(relatedSlider) {
       nextEl:'.related-projects__next',
       prevEl:'.related-projects__prev'
     },
+    breakpoints: {
+      576: {
+        slidesPerView:2
+      },
+      768:{
+        slidesPerView:3,
+      }
+    }
   });
 
   document.querySelector('.related-projects__prev').addEventListener('click',()=> {
@@ -405,7 +424,7 @@ circles.forEach(el => {
     });
     workSlider.on('slideChange',function() {
 
-      console.log('sda');
+
       historyBtns.forEach((el)=> {
         el.classList.remove('history-nav__btn--active');
       });

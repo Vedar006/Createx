@@ -5,14 +5,33 @@
   &__list {
     grid-template-rows: repeat(2,255px);
     margin-bottom: 80px;
+
+    @include tablet {
+      grid-template-rows: initial;
+    }
   }
+ 
 
   &__item {
     grid-column: 5 span;
     &:first-child {
       grid-column: 6 span;
       grid-row: 2 span;
+      @include tablet {
+        grid-row: auto;
+        grid-column: 12 span;
+      }
+      @include mobile {
+        grid-column: 4 span;
+      }
     }
+    @include tablet {
+      grid-column: 6 span;
+    }
+    @include mobile {
+      grid-column: 4 span;
+    }
+   
   }
   &__title {
     margin-bottom: 60px;

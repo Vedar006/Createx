@@ -4,12 +4,22 @@
   background-color: #f4f5f7;
   &__list {
 
-   --about-about-about-about-about-about-mission-gap:94px;
+   --about-mission-gap:94px;
     display: grid;
     grid-template-columns: repeat(3,1fr);
 
-    gap: calc(var(--about-about-about-about-about-about-mission-gap) * 2);
+    gap: calc(var(--about-mission-gap) * 2);
 
+
+    @include tablet {
+      --about-mission-gap:30px;
+    }
+    @include small-tablet {
+      --about-mission-gap:10px;
+    }
+    @include mobile {
+      display: block;
+    }
   }
   &__item {
     position: relative;
@@ -23,7 +33,7 @@
       &::after {
         content:"";
         position: absolute;
-        right: calc(-1 * var(--about-about-about-about-about-about-mission-gap));
+        right: calc(-1 * var(--about-mission-gap));
         top: 0;
         width: 1px;
         height: 100%;
@@ -41,6 +51,11 @@
     }
     &--comfort {
       background-image: url("../img/comfort.svg");
+    }
+    @include mobile {
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
     }
   }
   &__subtitle {

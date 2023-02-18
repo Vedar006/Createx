@@ -24,6 +24,9 @@ font-weight: 700;
 font-size: 20px;
 line-height: 150%;
 color: var(--color-ebony);
+@include minidesk {
+  font-size: 18px;
+}
 }
 &__descr {
   display: inline-block;
@@ -46,6 +49,9 @@ border: 1px solid currentColor;
 border-radius: 4px;
 transition: all 0.3s ease-in-out;
 will-change: margin;
+@include small-tablet {
+  margin-bottom: 0;
+}
 }
 &:focus {
   outline: 2px solid var(--color-primary);
@@ -53,7 +59,7 @@ will-change: margin;
 }
 
 &:hover {
-  
+
 
   .portfolio-item__btn {
 

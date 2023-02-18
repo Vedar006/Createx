@@ -28,6 +28,14 @@
       .form-field__input {
         height: 100px;
       }
+
+      @include mobile {
+        margin-top: 0;
+      }
+    }
+    @include mobile {
+      width: 100%;
+      margin-bottom: 20px;
     }
   }
 }
